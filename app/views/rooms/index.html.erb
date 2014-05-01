@@ -1,0 +1,15 @@
+<h2>This is the rooms page</h2>
+
+<!-- find all of the rooms and loop over them -->
+
+<% @rooms.each do |room| %>
+
+	<div class="room"> 
+		<!-- this will now link to the page. Don't need the add signs as we are in a loop -->
+		<h3> <%= link_to room.name, room_path(room) %> </h3>
+	</div>
+
+
+<% end %>
+
+<%= link_to "Add a New Room", new_room_path %>

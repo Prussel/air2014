@@ -1,0 +1,16 @@
+<h2><%= @room.name %> </h2>
+
+<!-- simple_format puts things on paragraphs if they are on other lines -->
+<p> <%= simple_format @room.description %> </p>
+<p> <%= @room.address %> </p>
+
+<div class= "actions">
+
+	<%= link_to "Edit", edit_room_path(@room) %>
+	<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
+</div>	
+
+
+<%= link_to "Back to the homepage", root_path %> 
