@@ -1,0 +1,11 @@
+<h2>Login to Onboard</h2>
+
+<!-- we need to add an extra url to show the form where to send the data -->
+<%= simple_form_for :session, url: session_path do |form| %>
+
+	<%= form.input :username %>
+	<%= form.input :password %>
+	
+	<%= form.button :submit, "Log In" %>
+
+<% end %>
