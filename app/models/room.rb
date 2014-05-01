@@ -19,6 +19,13 @@ class Room < ActiveRecord::Base
 		# we will do this after the top two items have been validated
 		after_validation :geocode
 
+		# adding in paperclip
+		# 960x400# will mean crop the image to 960x40
+		# could use 500x which would just do the width
+		# x500 just the height
+		# need the hash, without it will do either or
+		has_attached_file :image, styles: {large: "960x400#", medium: "320x200#", thumbnail: "60x60#" }
+			validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 	# anything else
 

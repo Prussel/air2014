@@ -5,8 +5,12 @@
 <% @rooms.each do |room| %>
 
 	<div class="room"> 
-		<!-- this will now link to the page. Don't need the add signs as we are in a loop -->
-		<h3> <%= link_to room.name, room_path(room) %> </h3>
+		<%= link_to room_path(room) do %>
+			<%= image_tag room.image(:thumbnail) %>
+			<!-- this will now link to the page. Don't need the add signs as we are in a loop -->
+			<h3> <%= room.name %> </h3>
+		<% end %>
+
 	</div>
 
 
