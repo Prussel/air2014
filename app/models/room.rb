@@ -12,6 +12,8 @@ class Room < ActiveRecord::Base
 	# validating the number of guests between two different numbers
 	validates :number_of_guests, presence: true, numericality: { greater_than: 0}
 
+	validates :price_in_pence, presence: true, numericality: {greater_than_or_equal_to: 50}
+
 	# plugins
 
 		# going to add in the geocoder gem. we can get the code to do this from the geocode website

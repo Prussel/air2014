@@ -33,7 +33,8 @@ def create
 
 		# charge them with stripe
 		# we are using the stripe gem
-		Stripe::Charge.create(amount: 100, currency: "gbp", card: @order.stripe_token, description: "Air order")
+		# we could also change the currency in the same way we have set the price per room
+		Stripe::Charge.create(amount: @room.price_in_pence, currency: "gbp", card: @order.stripe_token, description: "Air order")
 
 		# Stripe::Customer.create(card: @order.stripe_token, plan: "silver", description: "Onboard subscription")
 		# could have a destroy order in the controller to allow a customer to cancel a subscription

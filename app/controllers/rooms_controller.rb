@@ -121,7 +121,7 @@ def room_params
 		
 		# find the data from the form
 		# making sure it is the room form and that it only has the fields I want
-		params.require(:room).permit(:name, :address, :description, :number_of_guests, :image)
+		params.require(:room).permit(:name, :address, :description, :number_of_guests, :image, :price_in_pence)
 
 end
 
