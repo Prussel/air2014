@@ -39,6 +39,11 @@ def create
 		# Stripe::Customer.create(card: @order.stripe_token, plan: "silver", description: "Onboard subscription")
 		# could have a destroy order in the controller to allow a customer to cancel a subscription
 
+		# once we charge them we need to send the new order mails
+		# this @order is refering to the order that we defined in the order_mailer
+		OrderMailer.new_order_notification(@order).deliver
+
+
 		flash[:success] = "Woohoo - you've ordered a room!"
 
 		redirect_to room_path(@room)

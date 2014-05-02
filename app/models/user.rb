@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 	has_many :orders
 
 	# validations
-	validates :email, presence: true, uniqueness: true
-	validates :email, presence: true, uniqueness: true
+	validates :email, presence: true, uniqueness: true, if: ->{provider.nil?}
+	validates :email, presence: true, uniqueness: true, if: ->{provider.nil?}
 
 	
 	# plugins

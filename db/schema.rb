@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502111335) do
+ActiveRecord::Schema.define(version: 20140502143141) do
 
   create_table "orders", force: true do |t|
     t.integer  "room_id"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20140502111335) do
     t.string   "name"
     t.string   "username"
     t.string   "email"
+    t.string   "provider"
+    t.string   "provider_id"
+    t.string   "key"
+    t.string   "secret"
   end
 
 end
