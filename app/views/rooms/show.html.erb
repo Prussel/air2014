@@ -6,6 +6,16 @@
 <p> <%= simple_format @room.description %> </p>
 <p> <%= @room.address %> </p>
 
+
+<!-- if a person is logged in then they can see something on the page, in this case, the name of the person who added the room -->
+<% if @room.user.present? %>
+
+	<p>Added by <%= @room.user.username %> </p>
+
+<% end %>
+
+<!-- this is sayign that we will only show certain buttons if they are the the owner of the room ie. we only then allow them to edit and delete -->
+<% if current_user.present? and current_user == @room.user %>
 <div class= "actions">
 
 	<%= link_to "Edit", edit_room_path(@room) %>
@@ -13,6 +23,9 @@
 
 
 </div>	
+<% end %>
 
+<!-- because of the nested resources the path needs to go in order -->
+<%= link_to "Book", new_room_order_path(@room) %>
 
 <%= link_to "Back to the homepage", root_path %> 

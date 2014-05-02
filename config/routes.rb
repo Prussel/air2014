@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   
 
   # we want to add in the ability to create, updatem delete and view rooms
-  resources :rooms
+  resources :rooms do
+
+  	resources :orders
+
+  end	
+
+  # because orders are always on rooms we nest the resources
 
   resources :users
 

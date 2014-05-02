@@ -23,7 +23,17 @@ end
 
 helper_method :current_user
 
+# add a shortcut to redirect to the sign up page if logged out
 
+def make_sure_logged_in
+
+	if not current_user.present?
+		flash[:error] = "You must be signed up to see this page"
+		redirect_to new_user_path
+
+	end	
+
+end	
 
 
 end

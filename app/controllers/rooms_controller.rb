@@ -1,9 +1,34 @@
 class RoomsController < ApplicationController
 
+	# I want to do a check before certain activities happen
+	before_action :make_sure_logged_in, only: [:new, :create, :edit, :update, :destroy]
+
+
+
+
 def index
 	# this is the homepage
 	@rooms = Room.all
 
+# this is to filter on a room type being a flat instead of a house
+# we would need a type column in the DB
+	# if params[:type] == "flat"
+	# 	@rooms = @rooms.where(room_type: "flat")
+
+	# end	
+
+# this is how to filter that we want a double room not a single
+	# if params["double_room"] = "true"
+	# 	@rooms = @rooms.where ("double_room")
+
+	# end	
+
+
+# this is how we do an either or for a room type being EITHER a single or double 
+	# if params[:double_room] = "true"
+	# 	@rooms = @rooms where("room_type = ? or room_type = ?", "single", "double")
+
+	# end
 
 end
 
@@ -20,8 +45,10 @@ end
 def new
 
 	# add a new room form
+	# @room = Room.new
 
-	@room = Room.new
+	# using current_user which was created earlier in sessions stuff to ensure that new room is associated with the right user
+	@room = current_user.rooms.new
 
 end	
 
@@ -29,7 +56,7 @@ def create
 
 	# this will ensure what is added on the new page is created in the db
 
-	@room = Room.new(room_params)
+	@room = current_user.rooms.new(room_params)
 
 		if @room.save
 
@@ -53,13 +80,13 @@ end
 
 def edit
 	# a form for editing the room
-	@room = Room.find(params[:id])
+	@room = current_user.rooms.find(params[:id])
 
 end
 
 def update
 
-	@room = Room.find(params[:id])
+	@room = current_user.rooms.find(params[:id])
 
 	if @room.update(room_params)
 
@@ -77,7 +104,7 @@ end
 
 def destroy
 	# actually delete the room on the DB
-	@room = Room.find(params[:id])
+	@room = current_user.rooms.find(params[:id])
 
 	@room.destroy
 
