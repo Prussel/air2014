@@ -76,6 +76,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
+    foundation-rails (5.2.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     geocoder (1.2.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
@@ -224,6 +227,7 @@ DEPENDENCIES
   activeadmin!
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
+  foundation-rails
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
